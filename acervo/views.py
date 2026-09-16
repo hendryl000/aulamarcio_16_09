@@ -6,6 +6,11 @@ from .models import Livro
 
 def lista_livros(request):
     livros = Livro.objects.all()
+    
+    nome = request.GET.get("nome", "").strip()
+    tipo = request.GET.get("tipo", "").strip()
+    categoria = request.GET.get("categoria", "").strip()
+    
     return render(request, "acervo/lista.html", {"livros": livros})
 
 
