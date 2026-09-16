@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<h1>Acervo</h1>
+
+<ul>
+    {% for livro in livros %}
+        <li>
+            {{ livro.titulo }} — {{ livro.autor }} — {{ livro.ano }}
+        </li>
+    {% empty %}
+        <li>Nenhum livro cadastrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
