@@ -25,6 +25,16 @@ class Livro(models.Model):
     autor = models.CharField(max_length=100)
     ano = models.IntegerField()
     disponivel = models.BooleanField(default=True)
+    
+    tipo_acervo = models.CharField(
+        max_length=7,
+        choices=TIPO_ACERVO_CHOICES,
+    )
+
+    categoria = models.CharField(
+        max_length=3,
+        choices=CATEGORIA_CHOICES,
+    )
 
     def __str__(self):
         return self.titulo
