@@ -31,7 +31,7 @@ def lista_livros(request):
         },
     }
     
-    return render(request, "acervo/lista.html", {"livros": livros})
+    return render(request, "acervo/lista.html", {"livros": contexto})
 
 
 def novo_livro(request):
