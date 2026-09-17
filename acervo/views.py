@@ -11,6 +11,15 @@ def lista_livros(request):
     tipo = request.GET.get("tipo", "").strip()
     categoria = request.GET.get("categoria", "").strip()
     
+    if nome:
+        livros = livros.filter(titulo__icontains=nome)
+
+    if tipo:
+        livros = livros.filter(tipo_acervo=tipo)
+
+    if categoria:
+        livros = livros.filter(categoria=categoria)
+    
     return render(request, "acervo/lista.html", {"livros": livros})
 
 
