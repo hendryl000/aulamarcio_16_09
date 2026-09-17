@@ -19,6 +19,17 @@ def lista_livros(request):
 
     if categoria:
         livros = livros.filter(categoria=categoria)
+        
+    contexto = {
+        "livros": livros,
+        "tipos_acervo": Livro.TIPO_ACERVO_CHOICES,
+        "categorias": Livro.CATEGORIA_CHOICES,
+        "filtros": {
+            "nome": nome,
+            "tipo": tipo,
+            "categoria": categoria,
+        },
+    }
     
     return render(request, "acervo/lista.html", {"livros": livros})
 
