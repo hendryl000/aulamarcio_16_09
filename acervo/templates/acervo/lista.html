@@ -1,20 +1,34 @@
-{% extends "base.html" %}
-
-{% block conteudo %}
-<h1>Acervo</h1>
-  <input
+<form method="get">
+    <input
         type="text"
         name="nome"
         placeholder="Pesquisar por nome"
         value="{{ filtros.nome }}"
     >
-<ul>
-    {% for livro in livros %}
-        <li>
-            {{ livro.titulo }} — {{ livro.autor }} — {{ livro.ano }}
-        </li>
-    {% empty %}
-        <li>Nenhum livro cadastrado.</li>
-    {% endfor %}
-</ul>
-{% endblock %}
+
+    <select name="tipo">
+        <option value="">Todos os tipos</option>
+
+        {% for valor, descricao in tipos_acervo %}
+            <option value="{{ valor }}"
+                {% if filtros.tipo == valor %}selected{% endif %}
+            >
+                {{ descricao }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <select name="categoria">
+        <option value="">Todas as categorias</option>
+
+        {% for valor, descricao in categorias %}
+            <option value="{{ valor }}"
+                {% if filtros.categoria == valor %}selected{% endif %}
+            >
+                {{ descricao }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Pesquisar</button>
+</form>
