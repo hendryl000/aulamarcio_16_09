@@ -2,7 +2,12 @@
 
 {% block conteudo %}
 <h1>Acervo</h1>
-
+  <input
+        type="text"
+        name="nome"
+        placeholder="Pesquisar por nome"
+        value="{{ filtros.nome }}"
+    >
 <ul>
     {% for livro in livros %}
         <li>
